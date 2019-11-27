@@ -17,8 +17,7 @@ export default {
   data () {
     return {
       showCart: true,
-      products: [],
-      shopcartData: []
+      products: []
     }
   },
   // 生命周期
@@ -33,16 +32,19 @@ export default {
       })
       this.products = arr[0]
     })
-    // 根据当前商家ID，从购物车去除当前商家的产品
-    this.getShopCart(this.shopcart)
+    // // 根据当前商家ID，从购物车去除当前商家的产品
+    // this.getShopCart(this.shopcart)
   },
   // 计算
   computed: {
     seller () {
+      document.title = this.$store.getters.seller.name
       return this.$store.getters.seller
     },
-    // 扩展运算符,表示把外层的去掉
-    ...mapGetters(['shopcart'])
+    shopcartData () {
+    // shopcart里面是所有商家的购物车信息，我们要过滤
+      return this.$store.getters.shopcart[this.seller.id] || []
+    }
   },
   components: {
     Top,
@@ -56,10 +58,7 @@ export default {
   },
   methods: {
     getGoods () {},
-    getShopCart (shopcart) {
-    // shopcart里面是所有商家的购物车信息，我们要过滤
-      this.shopcartData = shopcart[this.seller.id] || []
-    },
+
     sub (product) {
       this.$store.commit(type.DEL_SHOPCART, {sellerId: this.seller.id, goods: product})
     },

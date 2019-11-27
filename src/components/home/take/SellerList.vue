@@ -57,7 +57,7 @@ export default {
       }).then(res => {
         this.sellerList = res.data
       })
-    }, 3000)
+    }, 1000)
   },
   components: {
     Star, Loading

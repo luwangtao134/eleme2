@@ -6,7 +6,7 @@
         <span class="discount">34</span>元</span>
     </div>
     <transition @enter="enter" @afterEnter="afterEnter" @leave="leave" @beforeEnter="beforeEnter" @beforeLeave="beforeLeave" @afterLeave="afterLeave">
-      <div class="slide" v-if="showList" ref="slide">
+      <div class="slide" :style="slideHeight" v-if="showList" ref="slide">
         <div class="title cl">
           <div class="text">已选商品</div>
           <div class="clear">
@@ -67,7 +67,7 @@ export default {
   data () {
     return {
       showList: true,
-      slideHeight: 350,
+      slideHeight: 500,
       box: 5
     }
   },

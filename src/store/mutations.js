@@ -1,4 +1,5 @@
 import * as type from './mutation-type'
+import Vue from 'vue'
 export default {
   [type.SAVE_SELLER] (state, seller) {
     state.seller = seller
@@ -24,7 +25,7 @@ export default {
       }
     } else {
       // 这个商家之前没在购物车里:就用这个菜作为该商家数组里的第一件
-      state.shopcart[sellerId] = [goods]
+      Vue.set(state.shopcart, sellerId, [goods])
     }
     sessionStorage.setItem('shopcart', JSON.stringify(state.shopcart))
   },
