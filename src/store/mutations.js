@@ -20,7 +20,7 @@ export default {
       }
       // 我们这次点的才，之前没点过，添加上去，count为1
       if (!sign) {
-        products.push(foods)
+        products.push(goods)
       }
     } else {
       // 这个商家之前没在购物车里:就用这个菜作为该商家数组里的第一件
@@ -42,6 +42,5 @@ export default {
     }
     sessionStorage.setItem('shopcart', JSON.stringify(state.shopcart))
   }
-
 
 }

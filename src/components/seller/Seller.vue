@@ -12,7 +12,7 @@ import ShopCart from './shopCart/shopCart'
 import GoodsList from './goodsList/GoodsList'
 import {GOODS} from '@/api'
 import {mapGetters} from 'vuex'
-import *as type from '@/store/mutation-type'
+import * as type from '@/store/mutation-type'
 export default {
   data () {
     return {
@@ -58,13 +58,13 @@ export default {
     getGoods () {},
     getShopCart (shopcart) {
     // shopcart里面是所有商家的购物车信息，我们要过滤
-    this.shopcartData = shopcart[this.seller.id] || []
+      this.shopcartData = shopcart[this.seller.id] || []
     },
     sub (product) {
-      this.$store.commit(type.DEL_SHOPCART,{sellerId:this.seller.id,goods: product})
+      this.$store.commit(type.DEL_SHOPCART, {sellerId: this.seller.id, goods: product})
     },
     plus (product) {
-      this.$store.commit(type.ADD_SHOPCART,{sellerId:this.seller.id,goods: product})
+      this.$store.commit(type.ADD_SHOPCART, {sellerId: this.seller.id, goods: product})
     }
   }
 }

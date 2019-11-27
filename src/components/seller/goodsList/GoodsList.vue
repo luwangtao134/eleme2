@@ -95,16 +95,16 @@ export default {
         }
       }
     },
-  sub (product) {
+    sub (product) {
     // 转化数据结构：由商品结构=》 购物车结构
-    const {name,price} = product
-    this.$emit('sub',{title: name,price,count: 2})
-  },
-  plus (product) {
+      const {name, price} = product
+      this.$emit('sub', {title: name, price, count: 2})
+    },
+    plus (product) {
     // 转化数据结构：由商品结构=》 购物车结构
-    const {name,price} = product
-    this.$emit('plus',{title: name,price,count: 2})
-  },
+      const {name, price} = product
+      this.$emit('plus', {title: name, price, count: 2})
+    },
 
     selectList (index) {
       this.activeCate = index
@@ -114,8 +114,8 @@ export default {
       const that = this
       this.products.types.forEach(pro => {
         pro.goods.forEach(food => {
-          let cart = that.shopcartData.find(d => food.name ===d.title)
-          that.$set(food,'count',cart?cart.count: 0)
+          let cart = that.shopcartData.find(d => food.name === d.title)
+          that.$set(food, 'count', cart ? cart.count : 0)
         })
       })
     }

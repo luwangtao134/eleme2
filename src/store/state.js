@@ -10,8 +10,8 @@ export default {
   seller: {},
   shopcart: {
     1: [
-      {title: '鸡腿堡',count: 2,price:30},
-      {title: '虾肉堡',count: 5,price:5},
+      {title: '鸡腿堡', count: 2, price: 30},
+      {title: '虾肉堡', count: 5, price: 5}
     ]
   }
 }

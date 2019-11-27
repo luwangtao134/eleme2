@@ -45,7 +45,7 @@ export default {
   },
   // 头部框下拉
   mounted () {
-    window.addEventListener('scroll',() => {
+    window.addEventListener('scroll', () => {
       if (this.$refs.search_bar.getBoundingClientRect().top <= 0) {
         this.searchBarFixed = true
       } else {

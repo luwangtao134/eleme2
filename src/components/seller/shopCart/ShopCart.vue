@@ -76,7 +76,7 @@ export default {
     totalMoney () {
       let sum = 0
       this.shopcartData.forEach((v) => {
-        sum += v.price*v.count
+        sum += v.price * v.count
       })
       sum += this.box
       return sum
@@ -86,11 +86,11 @@ export default {
   methods: {
     sub (product) {
       // 子组件
-      this.$emit ('sub',product)
+      this.$emit('sub', product)
     },
     plus (product) {
       // 子组件
-      this.$emit ('plus',product)
+      this.$emit('plus', product)
     },
     beforeEnter (el) {
     },

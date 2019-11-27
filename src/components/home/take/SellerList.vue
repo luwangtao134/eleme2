@@ -39,7 +39,6 @@
   </div>
 </template>
 <script>
-import {SELLER} from '@/api'
 import * as api from '@/api'
 import Star from '@/base/Star'
 import * as type from '@/store/mutation-type'
@@ -52,16 +51,16 @@ export default {
     }
   },
   created () {
-    setTimeout (() => {
+    setTimeout(() => {
       this.$http({
-      url: api.SELLER
-    }).then(res => {
-      this.sellerList = res.data
-    })
-    },3000)
+        url: api.SELLER
+      }).then(res => {
+        this.sellerList = res.data
+      })
+    }, 3000)
   },
   components: {
-    Star,Loading
+    Star, Loading
   },
   methods: {
     detail (seller) {

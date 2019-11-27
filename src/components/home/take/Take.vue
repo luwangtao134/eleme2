@@ -18,7 +18,7 @@ import BackTop from '@/base/BackTop'
 export default {
   name: 'Take',
   components: {
-    Top, Category, Ad, Recommend, Sellerlist,BackTop
+    Top, Category, Ad, Recommend, Sellerlist, BackTop
   }
 }
 </script>
