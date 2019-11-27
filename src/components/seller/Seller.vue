@@ -1,7 +1,7 @@
 <template>
   <div class="seller">
         <Top :seller='seller'></Top>
-        <GoodsList :products="products" :shopcartData="shopcartData"></GoodsList>
+        <GoodsList :products="products" :shopcartData="shopcartData" @sub='sub' @plus='plus'></GoodsList>
         <!--运用子组件传给父组件ShopCart.vue-->
         <Shop-cart :shopcartData="shopcartData" @sub='sub' @plus='plus'></Shop-cart>
   </div>

@@ -67,7 +67,7 @@ export default {
   data () {
     return {
       showList: true,
-      slideHeight: null,
+      slideHeight: 350,
       box: 5
     }
   },

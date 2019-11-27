@@ -6,9 +6,9 @@
       <skeleton class="skeleton"></skeleton>
     </div> -->
     <div v-if='sellerList.length==0'>
-      <Loding></Loding>
+      <Loading></Loading>
     </div>
-    <ul class="seller-list">
+    <ul class="seller-list" v-infinite-scroll="loadMore" infinite-scroll-disabled="loading" infinite-scroll-distance="20">
           <li class="list-item" v-for="(seller) in sellerList" :key="seller.id" @click="detail(seller)">
             <div class="logo">
               <img :src="'/'+seller.logo">
@@ -43,6 +43,7 @@ import {SELLER} from '@/api'
 import * as api from '@/api'
 import Star from '@/base/Star'
 import * as type from '@/store/mutation-type'
+import Loading from '@/base/Loading'
 export default {
   name: 'SellerList',
   data () {
@@ -50,15 +51,17 @@ export default {
       sellerList: []
     }
   },
-  components: {
-    Star
-  },
   created () {
-    this.$http({
+    setTimeout (() => {
+      this.$http({
       url: api.SELLER
     }).then(res => {
       this.sellerList = res.data
     })
+    },3000)
+  },
+  components: {
+    Star,Loading
   },
   methods: {
     detail (seller) {
@@ -66,6 +69,9 @@ export default {
       this.$store.commit(type.SAVE_SELLER, seller)
       // 跳转到商家详情页
       this.$router.push({name: 'Seller'})
+    },
+    loadMore () {
+      this.sellerList = this.sellerList.concat(this.sellerList)
     }
   }
 }

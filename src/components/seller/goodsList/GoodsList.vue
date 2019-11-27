@@ -71,6 +71,20 @@ export default {
       this.cateItemsHeight.push(lastHeight)
     })
   },
+  watch: {
+    products () {
+      console.log('watch products:')
+      this.loadGoods()
+    },
+    shopcartData: {
+      deep: true,
+      handler () {
+        console.log('watch shopCartData')
+        this.loadGoods()
+      }
+    }
+  },
+
   methods: {
     sliderList (event) {
       let scrollTop = event.target.scrollTop
@@ -81,9 +95,29 @@ export default {
         }
       }
     },
+  sub (product) {
+    // 转化数据结构：由商品结构=》 购物车结构
+    const {name,price} = product
+    this.$emit('sub',{title: name,price,count: 2})
+  },
+  plus (product) {
+    // 转化数据结构：由商品结构=》 购物车结构
+    const {name,price} = product
+    this.$emit('plus',{title: name,price,count: 2})
+  },
+
     selectList (index) {
       this.activeCate = index
       this.$refs.goods.scrollTop = this.cateItemsHeight[index]
+    },
+    loadGoods () {
+      const that = this
+      this.products.types.forEach(pro => {
+        pro.goods.forEach(food => {
+          let cart = that.shopcartData.find(d => food.name ===d.title)
+          that.$set(food,'count',cart?cart.count: 0)
+        })
+      })
     }
   }
 }

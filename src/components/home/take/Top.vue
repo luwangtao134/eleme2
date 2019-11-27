@@ -45,13 +45,13 @@ export default {
   },
   // 头部框下拉
   mounted () {
-    window.onscroll = () => {
+    window.addEventListener('scroll',() => {
       if (this.$refs.search_bar.getBoundingClientRect().top <= 0) {
         this.searchBarFixed = true
       } else {
         this.searchBarFixed = false
       }
-    }
+    })
   },
   // 销毁头部滚动框
   beforeDestroy () {
